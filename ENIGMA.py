@@ -5,6 +5,7 @@ import random
 import math
 import os
 from math import *
+from pygame import *
 
 # --- Настройки ---
 WIDTH, HEIGHT = 2560, 1440
@@ -16,9 +17,9 @@ MUSIC_SUBDIR = "music"
 # --- Инициализация ---
 pygame.init()
 try:
-    mixer.init()
-except Exception:
-    
+    pygame.mixer.init()
+except Exception as e:
+    print("Mixer error:", e)
     mixer = None
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -289,5 +290,6 @@ while running:
     window.blit(scaled_surface, (0, 0))
     pygame.display.flip()
     clock.tick(FPS)
+
 
 pygame.quit()
